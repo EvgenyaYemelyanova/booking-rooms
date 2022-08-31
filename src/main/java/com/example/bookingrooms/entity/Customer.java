@@ -1,4 +1,4 @@
-package com.bookingrooms.entity;
+package com.example.bookingrooms.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
