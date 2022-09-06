@@ -1,6 +1,6 @@
 package com.example.bookingrooms.service;
 
-import com.example.bookingrooms.entity.Customer;
+import com.example.bookingrooms.model.Customer;
 
 import java.util.List;
 
