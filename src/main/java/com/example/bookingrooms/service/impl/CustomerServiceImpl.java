@@ -1,6 +1,6 @@
 package com.example.bookingrooms.service.impl;
 
-import com.example.bookingrooms.entity.Customer;
+import com.example.bookingrooms.model.Customer;
 import com.example.bookingrooms.exception.CustomerNotFoundException;
 import com.example.bookingrooms.repositories.CustomerRepository;
 import com.example.bookingrooms.service.CustomerService;
@@ -51,7 +51,6 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findById(id).orElseThrow(
                 () -> new CustomerNotFoundException(String.format("Customer with id '%d' not found", id))
         );
-
         customerRepository.delete(customer);
     }
 
