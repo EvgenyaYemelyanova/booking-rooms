@@ -1,6 +1,6 @@
 package com.example.bookingrooms.controller;
 
-import com.example.bookingrooms.entity.Customer;
+import com.example.bookingrooms.model.Customer;
 import com.example.bookingrooms.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer/")
+@RequestMapping("/customer")
 public class CustomerController {
 
     private CustomerService customerService;
@@ -37,13 +37,13 @@ public class CustomerController {
         return customerService.getCustomerById(customerId);
     }
 
-    @PutMapping("/customer/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Customer updateCustomer(@PathVariable("id") long customerId, @RequestBody Customer customer) {
         return customerService.updateCustomer(customerId, customer);
     }
 
-    @DeleteMapping("/customer/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deleteCustomer(@PathVariable("id") long customerId) {
         customerService.deleteCustomer(customerId);

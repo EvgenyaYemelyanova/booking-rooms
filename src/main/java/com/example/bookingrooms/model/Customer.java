@@ -1,4 +1,4 @@
-package com.example.bookingrooms.entity;
+package com.example.bookingrooms.model;
 
 
 import javax.persistence.*;
@@ -30,7 +30,10 @@ public class Customer {
             " {max} characters long")
     @NotNull
     private String phoneNumber;
-
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    @NotNull
+    private Role role;
     @Column(name = "password", unique = true)
     @NotNull
     private String password;
@@ -38,20 +41,18 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, String phoneNumber, String password) {
+    public Customer(Long id, String firstName, String lastName, String email, String phoneNumber, Role role, String password) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.role = role;
         this.password = password;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -86,6 +87,14 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -99,12 +108,12 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(password, customer.password);
+        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(phoneNumber, customer.phoneNumber) && role == customer.role && Objects.equals(password, customer.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, phoneNumber, password);
+        return Objects.hash(id, firstName, lastName, email, phoneNumber, role, password);
     }
 
     @Override
@@ -115,6 +124,7 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", role=" + role +
                 ", password='" + password + '\'' +
                 '}';
     }
