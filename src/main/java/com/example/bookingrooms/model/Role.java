@@ -6,21 +6,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.example.bookingrooms.model.permission.Permission.*;
+
 public enum Role {
 
-    ADMIN(Set.of(
-            Permission.CREATE,
-            Permission.READ,
-            Permission.UPDATE,
-            Permission.DELETE,
-            Permission.WRITE)),
-    MANAGER(Set.of(
-            Permission.READ,
-            Permission.UPDATE,
-            Permission.DELETE)),
-    USER(Set.of(
-            Permission.READ,
-            Permission.WRITE));
+    ADMIN(Set.of(CREATE, READ, UPDATE, DELETE, WRITE)),
+    MANAGER(Set.of(READ, UPDATE, DELETE)),
+    USER(Set.of(READ, WRITE));
     private final Set<Permission> permissions;
     Role(Set<Permission> permissions) {
         this.permissions = permissions;
