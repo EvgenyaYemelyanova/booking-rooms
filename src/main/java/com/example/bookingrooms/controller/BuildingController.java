@@ -1,5 +1,6 @@
 package com.example.bookingrooms.controller;
 
+import com.example.bookingrooms.dto.BuildingDto;
 import com.example.bookingrooms.model.Building;
 import com.example.bookingrooms.service.BuildingService;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class BuildingController {
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('read')")
     @ResponseStatus(HttpStatus.OK)
-    public Building getBuildingById(@PathVariable("id") long buildingId) {
+    public BuildingDto getBuildingById(@PathVariable("id") long buildingId) {
         return buildingService.getBuildingId(buildingId);
     }
 

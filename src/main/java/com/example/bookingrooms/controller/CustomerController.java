@@ -1,5 +1,6 @@
 package com.example.bookingrooms.controller;
 
+import com.example.bookingrooms.dto.CustomerDto;
 import com.example.bookingrooms.model.Customer;
 import com.example.bookingrooms.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class CustomerController {
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('read')")
     @ResponseStatus(HttpStatus.OK)
-    public Customer getCustomerById(@PathVariable("id") long customerId) {
+    public CustomerDto getCustomerById(@PathVariable("id") long customerId) {
         return customerService.getCustomerById(customerId);
     }
     @PutMapping("/{id}")

@@ -1,8 +1,9 @@
 package com.example.bookingrooms.service.impl;
 
+import com.example.bookingrooms.dto.BuildingDto;
+import com.example.bookingrooms.dto.converter.BuildingConverter;
 import com.example.bookingrooms.exception.BuildingNotFoundException;
 import com.example.bookingrooms.model.Building;
-import com.example.bookingrooms.model.Customer;
 import com.example.bookingrooms.repositories.BuildingRepository;
 import com.example.bookingrooms.service.BuildingService;
 import org.springframework.data.domain.Page;
@@ -13,20 +14,21 @@ import java.util.List;
 
 @Service
 public class BuildingServiceImpl implements BuildingService {
-    BuildingRepository buildingRepository;
+    private final BuildingRepository buildingRepository;
+    private final BuildingConverter buildingConverter;
 
-    public BuildingServiceImpl(BuildingRepository buildingRepository) {
+    public BuildingServiceImpl(BuildingRepository buildingRepository, BuildingConverter buildingConverter) {
         this.buildingRepository = buildingRepository;
+        this.buildingConverter = buildingConverter;
     }
     @Override
     public Building createBuilding(Building building) {
         return buildingRepository.save(building);
     }
     @Override
-    public Building getBuildingId(long id) {
-        return buildingRepository.findById(id).orElseThrow(
-                () -> new BuildingNotFoundException(String.format("Building with id '%d' not found", id))
-        );
+    public BuildingDto getBuildingId(long id) {
+        Building building = buildingRepository.findById(id).get();
+        return buildingConverter.convertToDto(building);
     }
     @Override
     public Building updateBuilding(long id, Building newBuilding) {
