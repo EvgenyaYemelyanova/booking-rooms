@@ -1,5 +1,6 @@
 package com.example.bookingrooms.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,6 +25,7 @@ public class Building {
     @NotNull
     private String floorBuilding;
     @OneToMany(mappedBy = "building")
+    @JsonManagedReference
     private List<Apartment> apartment;
 
 }

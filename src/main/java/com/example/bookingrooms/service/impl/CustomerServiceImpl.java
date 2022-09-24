@@ -8,6 +8,7 @@ import com.example.bookingrooms.repositories.CustomerRepository;
 import com.example.bookingrooms.service.CustomerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

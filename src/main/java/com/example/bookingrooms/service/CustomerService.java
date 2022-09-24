@@ -2,6 +2,7 @@ package com.example.bookingrooms.service;
 
 import com.example.bookingrooms.dto.CustomerDto;
 import com.example.bookingrooms.model.Customer;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

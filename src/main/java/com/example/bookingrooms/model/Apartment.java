@@ -1,5 +1,6 @@
 package com.example.bookingrooms.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,9 +23,11 @@ public class Apartment {
     @Column(columnDefinition = "text")
     @NotNull
     private String description;
-    @ManyToOne()
+    @ManyToOne
+    @JsonBackReference
     private Building building;
     @ManyToOne()
+    @JsonBackReference
     private Customer customer;
 
 }

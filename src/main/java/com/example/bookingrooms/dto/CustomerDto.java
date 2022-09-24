@@ -14,6 +14,5 @@ public class CustomerDto {
     private String email;
     private String phoneNumber;
     private Role role;
-    private String password;
     private List<ApartmentDto> apartment;
 }
