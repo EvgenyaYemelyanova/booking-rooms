@@ -2,6 +2,7 @@ package com.example.bookingrooms.config;
 
 import com.example.bookingrooms.security.JwtConfigurer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

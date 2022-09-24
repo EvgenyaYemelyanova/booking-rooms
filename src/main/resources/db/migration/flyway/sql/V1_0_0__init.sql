@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS customers (
+CREATE TABLE IF NOT EXISTS customer (
     id SERIAL PRIMARY KEY,
     first_name varchar(255),
     last_name varchar(255),
